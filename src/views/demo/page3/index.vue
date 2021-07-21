@@ -1,8 +1,12 @@
 <template>
   <d2-container>
-    <template slot="header">Dashboard header</template>
-    Hello World
-    <ve-line :data="chartData"></ve-line>
+    <template slot="header"><d2-icon name="github"/> Dashboard header</template>
+    <div><d2-count-up :end="100"/> </div>
+      Hello World!
+      <ve-line :data="chartData"/>
+      <ve-line :data="chartData"/>
+      <p><d2-count-up :end="100" :decimals="2"/>
+      </p>
   </d2-container>
 </template>
 
