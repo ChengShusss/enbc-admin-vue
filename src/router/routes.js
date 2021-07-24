@@ -9,7 +9,7 @@ const _import = require('@/libs/util.import.' + process.env.NODE_ENV)
 const frameIn = [
   {
     path: '/',
-    redirect: { name: 'index' },
+    redirect: { name: 'dashboard' },
     component: layoutHeaderAside,
     children: [
       // 首页
@@ -20,6 +20,15 @@ const frameIn = [
           auth: true
         },
         component: _import('system/index')
+      },
+      {
+        path: 'dashboard',
+        name: 'dashboard',
+        meta: {
+          title: '数据看板',
+          auth: true
+        },
+        component: _import('pages/dashboard')
       },
       // 演示页面
       {
@@ -104,8 +113,4 @@ const errorPage = [
 export const frameInRoutes = frameIn
 
 // 重新组织后导出
-export default [
-  ...frameIn,
-  ...frameOut,
-  ...errorPage
-]
+export default [...frameIn, ...frameOut, ...errorPage]
