@@ -1,12 +1,16 @@
 <template>
   <d2-container>
-    <template slot="header"><d2-icon name="github"/> Dashboard header</template>
-      Hello World!
-      <ve-line :data="chartData"/>
+    <template slot="header">
+      <d2-icon name="github" /> Dashboard header
+    </template>
+    Hello World!
+    <button @click="update"> 测试 </button>
+    <ve-line :data="chartData" />
   </d2-container>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'page3',
   data () {
@@ -22,6 +26,16 @@ export default {
           { 日期: '1/6', 访问用户: 4593, 下单用户: 4293, 下单率: 0.78 }
         ]
       }
+    }
+  },
+  methods: {
+    update: function () {
+      axios
+        .get('/json_demo.json')
+        .then(response => (alert(response)))
+        .catch(function (error) { // 请求失败处理
+          console.log(error);
+        });
     }
   }
 }
